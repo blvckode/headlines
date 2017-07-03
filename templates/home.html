@@ -3,8 +3,14 @@
     <title>Headlines</title>
 </head>
 <body>
+
 <h1>Headlines</h1>
+<form>
+    <input type="search" name="publication" placeholder="search">
+    <input type="submit" value="Submit">
+</form>
 {% for article in articles %}
+<img src="{{ article.media_thumbnail.0.url }}">
 <b><a href="{{article.link}}">{{ article.title }}</a></b><br>
 <i>{{ article.published }}</i><br>
 <p>{{ article.summary }}</p>
