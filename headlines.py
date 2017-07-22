@@ -43,7 +43,8 @@ def home():
     rate, currencies = get_rate(currency_from, currency_to)
 
     # save cookies and return template
-    response = make_response(render_template("home.html",publication = publication,  articles = articles,weather=weather, currency_from = currency_from,
+    response = make_response(render_template("home.html",publication = publication,  articles = articles,
+                                             weather=weather, currency_from = currency_from,
                            currency_to = currency_to, rate = rate, currencies = sorted(currencies)))
     expires = datetime.datetime.now() + datetime.timedelta(days=365)
     response.set_cookie("publication", publication, expires=expires)
@@ -73,10 +74,6 @@ def get_weather(query):
         weather = {"description":parsed["weather"][0]["description"],"temperature":parsed["main"]["temp"],
                    "city":parsed["name"],"country":parsed["sys"]["country"]}
     return weather
-
-
-
-
 
 
 if __name__ == "__main__":
